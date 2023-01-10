@@ -1,18 +1,20 @@
 const express = require('express')
 const cors = require('cors')
+const bodyParser = require('body-parser')
+const multer = require('multer')
 const app = express();
 
 // connect to mongodb
 require('./connectors/mongodb')
 
-const bodyParser = require('body-parser')
 
 require('dotenv').config()
 
-// configure app to use bodyParser()
+// configure app to use bodyParser() and multer()
 // this will let us get the data from a POST
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
+app.use(multer().array())
 
 //We want to access the api from another domain
 app.use(cors());
