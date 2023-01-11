@@ -1,18 +1,26 @@
 const mongoose = require("mongoose")
 
 const schema = mongoose.Schema({
-    urlCode: {
+    shortcode: {
         type: String,
         required: true
     },
-    longUrl: {
+    url: {
         type: String,
         required: true
     },
     shortUrl: {
         type: String,
         required: true
+    },
+    entry: {
+        type: Number,
+        default: 0
     }
-}, { timestamps: true })
+}, {
+    timestamps: true,
+    collation: { locale: 'en', strength: 2 },
+    versionKey: false
+})
 
 module.exports = mongoose.model("Url", schema)
