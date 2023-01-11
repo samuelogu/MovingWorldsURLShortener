@@ -23,3 +23,24 @@ BASE_URL=http://localhost:3000
 ```
 
 Start your server with `npm start` and you are ready to start building
+
+## HTTP Request ##
+
+```http request
+### Send POST request with long url and custom shortcode
+POST http://localhost:3000/submit
+Content-Type: application/json
+
+{
+"url": "https://blog.movingworlds.org/investment-banker-career-change-for-purpose/",
+  "shortcode": "d3re"
+}
+
+### GET request with shortcode
+GET http://localhost:3000/d3re
+Accept: application/json
+
+### GET request to request shortcode stats
+GET http://localhost:3000/d3re/stats
+Accept: application/json
+```
