@@ -15,7 +15,7 @@ routes.get("/", (req, res)=> {
 })
 
 routes.get('/:shortcode', url.shortcode)
-routes.get('/:shortcode/stat', check.shortcodeExist, url.stat)
+routes.get('/:shortcode/stats', check.shortcodeExist, url.stat)
 routes.post('/submit', [validator(schemas.submit), check.isValidUrl, check.shortcode], url.submit)
 
 routes.use( async (req, res, next) => {
