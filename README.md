@@ -26,7 +26,7 @@ Start your server with `npm start` and you are ready to start building
 
 ## HTTP Request ##
 
-```http request
+```bash
 ### Send POST request with long url and custom shortcode
 POST http://localhost:3000/submit
 Content-Type: application/json
@@ -43,4 +43,17 @@ Accept: application/json
 ### GET request to get shortcode stats
 GET http://localhost:3000/d3re/stats
 Accept: application/json
+```
+
+## Frontend ##
+
+The frontend is built using [SvelteKit](https://kit.svelte.dev/)
+
+Once you've cloned the project, `cd frontend` and install dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+
+```bash
+npm run dev
+
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
 ```
