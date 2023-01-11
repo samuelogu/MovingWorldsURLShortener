@@ -39,7 +39,7 @@ class urlService {
     }
 
     static async updateEntry(shortcode) {
-        await Url.findOneAndUpdate({ shortcode }, { $inc: { "entry" : 1 } })
+        await Url.findOneAndUpdate({ shortcode }, { $inc: { "clicks" : 1 } })
     }
 
     static async checkIfUrlExistWithShortcode(url, shortcode) {

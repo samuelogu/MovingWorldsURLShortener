@@ -13,7 +13,7 @@ const schema = mongoose.Schema({
         type: String,
         required: true
     },
-    entry: {
+    clicks: {
         type: Number,
         default: 0
     }

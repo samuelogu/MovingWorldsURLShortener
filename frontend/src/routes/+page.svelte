@@ -172,12 +172,12 @@
                                             <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{urlData.shortcode}</dd>
                                         </div>
                                         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                            <dt class="text-sm font-medium text-gray-500">Number of entry</dt>
-                                            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{urlData.entry}</dd>
+                                            <dt class="text-sm font-medium text-gray-500">Number of clicks</dt>
+                                            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{urlData.clicks}</dd>
                                         </div>
                                         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                            <dt class="text-sm font-medium text-gray-500">Last entry</dt>
-                                            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{urlData.entry ? moment(urlData.updatedAt, moment.HTML5_FMT.DATETIME_LOCAL_MS).format('MMMM Do YYYY, h:mm a') : 'None'}</dd>
+                                            <dt class="text-sm font-medium text-gray-500">Last clicked</dt>
+                                            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{urlData.clicks ? moment(urlData.updatedAt, moment.HTML5_FMT.DATETIME_LOCAL_MS).format('MMMM Do YYYY, h:mm a') : 'Not available'}</dd>
                                         </div>
                                         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                             <dt class="text-sm font-medium text-gray-500">Date created</dt>
