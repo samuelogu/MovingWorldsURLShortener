@@ -20,14 +20,7 @@ class urlService {
     }
 
     static async getUrlStat(shortcode) {
-
-        let url = await Url.findOne({ shortcode });
-        url.lastAccessed = url.updatedAt
-        delete url.updatedAt;
-
-        console.log(url);
-
-        return url;
+        return Url.findOne({shortcode});
     }
 
     static async getUrl(shortcode) {
