@@ -1,8 +1,12 @@
 const routes = require('express').Router();
 const createError = require('http-errors')
-const url = require('./url')
+const url = require('../controllers/url.controller')
 
-routes.all("/", (req, res)=> {
+const check = require('../middlewares/check')
+const validator = require('../middlewares/validator')
+const schemas = require('../validators/url.validator')
+
+routes.get("/", (req, res)=> {
 
     res.status(200).json({
         status: true,
@@ -10,7 +14,9 @@ routes.all("/", (req, res)=> {
     })
 })
 
-routes.use('/url', url)
+routes.get('/:shortcode', url.shortcode)
+routes.get('/:shortcode/stat', check.shortcodeExist, url.stat)
+routes.post('/submit', [validator(schemas.submit), check.isValidUrl, check.shortcode], url.submit)
 
 routes.use( async (req, res, next) => {
     next(createError.NotFound('Route not Found'))
