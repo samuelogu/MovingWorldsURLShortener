@@ -1,15 +1,15 @@
-const post = require('../services/post.service')
+const urlService = require('../services/url.service')
 const createError = require('http-errors')
 
-class postController {
+class urlController {
 
-    static all = async (req, res, next) => {
+    static submit = async (req, res, next) => {
 
         try {
-            const data = await post.getPost()
+            const data = await urlService.submitUrl(req.body)
             res.status(200).json({
                 status: true,
-                message: "All posts",
+                message: "Url successfully shorten",
                 data
             })
         } catch (e) {
@@ -18,68 +18,34 @@ class postController {
 
     }
 
-    static create = async (req, res, next) => {
+    static shortcode = async (req, res, next) => {
 
-        const { body, title } = req.body
+        const { shortcode } = req.params;
 
         try {
-            const data = await post.createPost(title, body)
-            res.status(206).json({
-                status: true,
-                message: "Post successfully created",
-                data
-            })
+
+            const url = await urlService.getUrl(shortcode);
+
+            res.redirect(url)
+
         } catch (e) {
             next(createError(e.statusCode, e.message))
         }
 
     }
 
-    static find = async (req, res, next) => {
+    static stat = async (req, res, next) => {
 
-        const { id } = req.params
+        const { shortcode } = req.params;
 
         try {
-            const data = await post.findPost(id)
+
+            const data = await urlService.getUrlStat(shortcode);
+
             res.status(200).json({
                 status: true,
-                message: "Post found",
+                message: "Url stats",
                 data
-            })
-        } catch (e) {
-            next(createError(e.statusCode, e.message))
-        }
-
-    }
-
-    static update = async (req, res, next) => {
-
-        const { body, title } = req.body
-        const { id } = req.params
-
-        try {
-            const data = await post.updatePost(id, title, body)
-            res.status(200).json({
-                status: true,
-                message: "Post successfully updated",
-                data
-            })
-        } catch (e) {
-            next(createError(e.statusCode, e.message))
-        }
-
-    }
-
-    static remove = async (req, res, next) => {
-
-        const { id } = req.params
-
-        try {
-            await post.removePost(id)
-            res.status(200).json({
-                status: true,
-                message: "Post successfully removed",
-                data: null
             })
         } catch (e) {
             next(createError(e.statusCode, e.message))
@@ -89,4 +55,4 @@ class postController {
 
 }
 
-module.exports = postController;
+module.exports = urlController;
