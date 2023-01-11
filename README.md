@@ -40,7 +40,7 @@ Content-Type: application/json
 GET http://localhost:3000/d3re
 Accept: application/json
 
-### GET request to request shortcode stats
+### GET request to get shortcode stats
 GET http://localhost:3000/d3re/stats
 Accept: application/json
 ```
